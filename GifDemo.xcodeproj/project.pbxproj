@@ -29,6 +29,10 @@
 		E22A2337223D7021001E82EA /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A2318223D7020001E82EA /* BaseModel.m */; };
 		E22A2338223D7021001E82EA /* PPInvitationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A2325223D7020001E82EA /* PPInvitationButton.m */; };
 		E22A233A223D7021001E82EA /* NSMutableObject+SafeInsert.mm in Sources */ = {isa = PBXBuildFile; fileRef = E22A232C223D7021001E82EA /* NSMutableObject+SafeInsert.mm */; };
+		E2F84950223E17DC0058936E /* FileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F8494F223E17DC0058936E /* FileViewController.m */; };
+		E2F84954223E18510058936E /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F84953223E18510058936E /* FileModel.m */; };
+		E2F84959223E19400058936E /* test1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E2F84958223E19400058936E /* test1.bundle */; };
+		E2F8495C223E1BF10058936E /* FileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F8495A223E1BF10058936E /* FileListController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +92,14 @@
 		E22A232C223D7021001E82EA /* NSMutableObject+SafeInsert.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSMutableObject+SafeInsert.mm"; sourceTree = "<group>"; };
 		E22A232D223D7021001E82EA /* NSMutableObject+SafeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableObject+SafeInsert.h"; sourceTree = "<group>"; };
 		E26D2896223843D500A97EEF /* FaceuKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FaceuKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2F8494F223E17DC0058936E /* FileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileViewController.m; sourceTree = "<group>"; };
+		E2F84951223E18020058936E /* FileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileViewController.h; sourceTree = "<group>"; };
+		E2F84952223E18300058936E /* FileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
+		E2F84953223E18510058936E /* FileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
+		E2F84958223E19400058936E /* test1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = test1.bundle; sourceTree = "<group>"; };
+		E2F8495A223E1BF10058936E /* FileListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileListController.m; sourceTree = "<group>"; };
+		E2F8495B223E1BF10058936E /* FileListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileListController.h; sourceTree = "<group>"; };
+		E2F8495D223E38B60058936E /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +214,7 @@
 		E22A2300223D7020001E82EA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E2F8494A223E177D0058936E /* FileBrowser */,
 				E22A2313223D7020001E82EA /* Base */,
 				E22A233B223D72CF001E82EA /* Gif */,
 			);
@@ -285,6 +298,7 @@
 		E22A2327223D7021001E82EA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E2F84958223E19400058936E /* test1.bundle */,
 				E22A2328223D7021001E82EA /* Image */,
 				E22A232A223D7021001E82EA /* Icon */,
 			);
@@ -360,6 +374,52 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		E2F8494A223E177D0058936E /* FileBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				E2F8494E223E179F0058936E /* Model */,
+				E2F8494D223E17970058936E /* Controller */,
+				E2F8494C223E17920058936E /* View */,
+				E2F8494B223E178B0058936E /* ViewModel */,
+			);
+			path = FileBrowser;
+			sourceTree = "<group>";
+		};
+		E2F8494B223E178B0058936E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E2F8494C223E17920058936E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2F8494D223E17970058936E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2F84951223E18020058936E /* FileViewController.h */,
+				E2F8494F223E17DC0058936E /* FileViewController.m */,
+				E2F8495B223E1BF10058936E /* FileListController.h */,
+				E2F8495A223E1BF10058936E /* FileListController.m */,
+				E2F8495D223E38B60058936E /* Header.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E2F8494E223E179F0058936E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2F84952223E18300058936E /* FileModel.h */,
+				E2F84953223E18510058936E /* FileModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -421,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E219EF9A21F6772B0085737B /* demo.gif in Resources */,
+				E2F84959223E19400058936E /* test1.bundle in Resources */,
 				E219EF6721F66F000085737B /* Assets.xcassets in Resources */,
 				E219EFA321F681400085737B /* large.gif in Resources */,
 			);
@@ -482,6 +543,7 @@
 			files = (
 				E22A2334223D7021001E82EA /* BaseView.m in Sources */,
 				E22A2335223D7021001E82EA /* BaseViewController.m in Sources */,
+				E2F84950223E17DC0058936E /* FileViewController.m in Sources */,
 				E219EF9321F674D00085737B /* MxImage.mm in Sources */,
 				E22A2333223D7021001E82EA /* BaseViewModel.m in Sources */,
 				E219EF9521F674D00085737B /* MMGifView.mm in Sources */,
@@ -490,9 +552,11 @@
 				E219EF6221F66EFF0085737B /* ViewController.m in Sources */,
 				E219EF9421F674D00085737B /* MMGifViewMgr.mm in Sources */,
 				E219EF9621F674D00085737B /* MxGifImage.mm in Sources */,
+				E2F84954223E18510058936E /* FileModel.m in Sources */,
 				E219EF6D21F66F000085737B /* main.m in Sources */,
 				E219EF9221F674D00085737B /* MxAlgorithm.mm in Sources */,
 				E219EF9721F674D00085737B /* GifCore.mm in Sources */,
+				E2F8495C223E1BF10058936E /* FileListController.m in Sources */,
 				E22A233A223D7021001E82EA /* NSMutableObject+SafeInsert.mm in Sources */,
 				E219EF5F21F66EFF0085737B /* AppDelegate.m in Sources */,
 				E22A2338223D7021001E82EA /* PPInvitationButton.m in Sources */,

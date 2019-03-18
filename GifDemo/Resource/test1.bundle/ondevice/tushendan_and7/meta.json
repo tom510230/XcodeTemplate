@@ -1,0 +1,570 @@
+{
+  "detectFlags" : "",
+  "version" : 1,
+  "position" : 4000,
+  "innerfilter" : "strongman2",
+  "filters" : [
+    {
+      "data" : {
+        "audioPlayMode" : 0,
+        "resloadtype" : 0,
+        "glsl" : "glsl",
+        "foldername" : "strongman2",
+        "resources" : [
+          "a.png"
+        ],
+        "params" : [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "pointIndexes" : [
+          [
+            46
+          ],
+          [
+            46
+          ]
+        ],
+        "maxPersonCount" : 5,
+        "triggerType" : 2,
+        "audio" : ""
+      },
+      "name" : "strongman2",
+      "type" : "shape",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "audioPlayMode" : 0,
+        "resloadtype" : 0,
+        "glsl" : "glsl",
+        "foldername" : "strongman",
+        "resources" : [
+          ""
+        ],
+        "params" : [
+          2,
+          0,
+          0.25,
+          2,
+          -0.99000000953674316,
+          1.8999999761581421,
+          0.5,
+          10.579999923706055
+        ],
+        "pointIndexes" : [
+          [
+            5,
+            16,
+            27,
+            46,
+            74,
+            77,
+            84,
+            90,
+            10,
+            22,
+            13,
+            19,
+            82,
+            83
+          ],
+          [
+            5,
+            16,
+            27,
+            46,
+            74,
+            77,
+            84,
+            90,
+            10,
+            22,
+            13,
+            19,
+            82,
+            83
+          ]
+        ],
+        "maxPersonCount" : 2,
+        "triggerType" : 0,
+        "audio" : ""
+      },
+      "name" : "strongman",
+      "type" : "shape",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "layout" : {
+          "pos" : {
+            "vert" : "bottom",
+            "horiz" : "stretch",
+            "horizOffset" : 0,
+            "vertOffset" : 0
+          },
+          "anchor" : {
+            "x" : 0,
+            "y" : 1
+          },
+          "hiddenRatios" : [
+            "F11",
+            "F169"
+          ]
+        },
+        "showUtilFinish" : 1,
+        "width" : 750,
+        "type" : "A",
+        "audio" : "",
+        "frameDuration" : 50,
+        "alignAudio" : 0,
+        "folderName" : "bg43",
+        "height" : 1000,
+        "frames" : 1,
+        "triggerType" : 2,
+        "maxPersonCount" : 5,
+        "looping" : 1
+      },
+      "name" : "bg43",
+      "type" : "dynamic",
+      "reload" : 1
+    },
+    {
+      "data" : {
+        "showUtilFinish" : 0,
+        "rightIndex" : 32,
+        "alignX" : 180,
+        "alignAudio" : 0,
+        "alignIndexLst" : [
+          46
+        ],
+        "scaleWidth" : 200,
+        "triggerType" : 0,
+        "type" : "D",
+        "alignY" : 320,
+        "convertTo3D" : true,
+        "audio" : "c.mp3",
+        "folderName" : "kongbai",
+        "width" : 360,
+        "height" : 640,
+        "looping" : 1,
+        "frameDuration" : 50,
+        "frames" : 1,
+        "leftIndex" : 0,
+        "maxPersonCount" : 5
+      },
+      "name" : "kongbai",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "showUtilFinish" : 1,
+        "rightIndex" : 32,
+        "alignX" : 140,
+        "alignAudio" : 1,
+        "alignIndexLst" : [
+          43
+        ],
+        "scaleWidth" : 308,
+        "triggerType" : 2,
+        "type" : "D",
+        "alignY" : 390,
+        "convertTo3D" : true,
+        "audio" : "",
+        "folderName" : "tou",
+        "width" : 284,
+        "height" : 233,
+        "looping" : 1,
+        "frameDuration" : 50,
+        "frames" : 1,
+        "leftIndex" : 0,
+        "maxPersonCount" : 5
+      },
+      "name" : "tou",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "pointIndexes" : [
+          [
+            5,
+            16,
+            27,
+            46,
+            74,
+            77,
+            84,
+            90,
+            10,
+            22,
+            13,
+            19
+          ],
+          [
+            5,
+            16,
+            27,
+            46,
+            74,
+            77,
+            84,
+            90,
+            10,
+            22,
+            13,
+            19
+          ]
+        ],
+        "foldername" : "strongman1",
+        "params" : [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "resources" : [
+          ""
+        ],
+        "levels" : [
+          0,
+          0.20000000298023224,
+          0.60000002384185791,
+          1
+        ],
+        "resloadtype" : 0,
+        "triggerType" : 2,
+        "glsl" : "glsl",
+        "audio" : "",
+        "audioPlayMode" : 0,
+        "maxPersonCount" : 2
+      },
+      "name" : "strongman1",
+      "type" : "shape",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "showUtilFinish" : 1,
+        "rightIndex" : 32,
+        "alignX" : 238,
+        "alignAudio" : 1,
+        "alignIndexLst" : [
+          74,
+          77
+        ],
+        "scaleWidth" : 461,
+        "triggerType" : 2,
+        "type" : "D",
+        "alignY" : 16,
+        "convertTo3D" : true,
+        "audio" : "",
+        "folderName" : "sh1",
+        "width" : 170,
+        "height" : 134,
+        "looping" : 1,
+        "frameDuration" : 50,
+        "frames" : 1,
+        "leftIndex" : 0,
+        "maxPersonCount" : 5
+      },
+      "name" : "sh1",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "layout" : {
+          "pos" : {
+            "vert" : "stretch",
+            "horiz" : "stretch",
+            "horizOffset" : 0,
+            "vertOffset" : 0
+          },
+          "anchor" : {
+            "x" : 0,
+            "y" : 0
+          },
+          "hiddenRatios" : [
+
+          ]
+        },
+        "showUtilFinish" : 1,
+        "width" : 360,
+        "type" : "A",
+        "audio" : "b.mp3",
+        "frameDuration" : 50,
+        "alignAudio" : 0,
+        "folderName" : "bg",
+        "height" : 640,
+        "frames" : 1,
+        "triggerType" : 2,
+        "maxPersonCount" : 5,
+        "looping" : 1
+      },
+      "name" : "bg",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "showUtilFinish" : 1,
+        "rightIndex" : 32,
+        "alignX" : 283,
+        "alignAudio" : 1,
+        "alignIndexLst" : [
+          46
+        ],
+        "scaleWidth" : 441,
+        "triggerType" : 2,
+        "type" : "D",
+        "alignY" : 118,
+        "convertTo3D" : true,
+        "audio" : "",
+        "folderName" : "hz",
+        "width" : 566,
+        "height" : 225,
+        "looping" : 1,
+        "frameDuration" : 50,
+        "frames" : 1,
+        "leftIndex" : 0,
+        "maxPersonCount" : 5
+      },
+      "name" : "hz",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "showUtilFinish" : 0,
+        "rightIndex" : 32,
+        "alignX" : 75,
+        "alignAudio" : 0,
+        "alignIndexLst" : [
+          46
+        ],
+        "scaleWidth" : 156,
+        "triggerType" : 0,
+        "type" : "D",
+        "alignY" : 11,
+        "convertTo3D" : true,
+        "audio" : "a.mp3",
+        "folderName" : "zui2",
+        "width" : 150,
+        "height" : 318,
+        "looping" : 1,
+        "frameDuration" : 50,
+        "frames" : 50,
+        "leftIndex" : 0,
+        "maxPersonCount" : 5
+      },
+      "name" : "zui2",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "layout" : {
+          "pos" : {
+            "vert" : "stretch",
+            "horiz" : "stretch",
+            "horizOffset" : 0,
+            "vertOffset" : 0
+          },
+          "anchor" : {
+            "x" : 0,
+            "y" : 0
+          },
+          "hiddenRatios" : [
+            "F11",
+            "F43"
+          ]
+        },
+        "showUtilFinish" : 1,
+        "width" : 1254,
+        "type" : "A",
+        "audio" : "",
+        "frameDuration" : 50,
+        "alignAudio" : 0,
+        "folderName" : "bg11",
+        "height" : 2230,
+        "frames" : 1,
+        "triggerType" : 2,
+        "maxPersonCount" : 5,
+        "looping" : 1
+      },
+      "name" : "bg11",
+      "type" : "dynamic",
+      "reload" : 1
+    },
+    {
+      "data" : {
+        "showUtilFinish" : 1,
+        "rightIndex" : 32,
+        "alignX" : -100,
+        "alignAudio" : 1,
+        "alignIndexLst" : [
+          74,
+          77
+        ],
+        "scaleWidth" : 461,
+        "triggerType" : 2,
+        "type" : "D",
+        "alignY" : 16,
+        "convertTo3D" : true,
+        "audio" : "",
+        "folderName" : "sh2",
+        "width" : 170,
+        "height" : 134,
+        "looping" : 1,
+        "frameDuration" : 50,
+        "frames" : 1,
+        "leftIndex" : 0,
+        "maxPersonCount" : 5
+      },
+      "name" : "sh2",
+      "type" : "dynamic",
+      "reload" : 0
+    },
+    {
+      "data" : {
+        "layout" : {
+          "pos" : {
+            "vert" : "bottom",
+            "horiz" : "stretch",
+            "horizOffset" : 0,
+            "vertOffset" : 0
+          },
+          "anchor" : {
+            "x" : 0,
+            "y" : 1
+          },
+          "hiddenRatios" : [
+            "F43",
+            "F169"
+          ]
+        },
+        "showUtilFinish" : 1,
+        "width" : 750,
+        "type" : "A",
+        "audio" : "",
+        "frameDuration" : 50,
+        "alignAudio" : 0,
+        "folderName" : "bg111",
+        "height" : 750,
+        "frames" : 1,
+        "triggerType" : 2,
+        "maxPersonCount" : 5,
+        "looping" : 1
+      },
+      "name" : "bg111",
+      "type" : "dynamic",
+      "reload" : 1
+    },
+    {
+      "data" : {
+        "layout" : {
+          "pos" : {
+            "vert" : "stretch",
+            "horiz" : "stretch",
+            "horizOffset" : 0,
+            "vertOffset" : 0
+          },
+          "anchor" : {
+            "x" : 0,
+            "y" : 0
+          },
+          "hiddenRatios" : [
+
+          ]
+        },
+        "showUtilFinish" : 1,
+        "width" : 360,
+        "type" : "A",
+        "audio" : "",
+        "frameDuration" : 50,
+        "alignAudio" : 0,
+        "folderName" : "bg4",
+        "height" : 640,
+        "frames" : 45,
+        "triggerType" : 2,
+        "maxPersonCount" : 5,
+        "looping" : 1
+      },
+      "name" : "bg4",
+      "type" : "dynamic",
+      "reload" : 1
+    }
+  ],
+  "type" : "multi",
+  "sections" : [
+    {
+      "filterlist" : [
+        "strongman1",
+        "strongman2",
+        "sh1",
+        "sh2",
+        "hz",
+        "tou",
+        "bg4",
+        "bg",
+        "bg11",
+        "bg43",
+        "bg111"
+      ],
+      "tips" : "张开嘴巴",
+      "sectionname" : "a",
+      "duration" : 3
+    },
+    {
+      "filterlist" : [
+        "strongman",
+        "strongman2",
+        "sh1",
+        "sh2",
+        "hz",
+        "tou",
+        "zui2",
+        "kongbai",
+        "bg4",
+        "bg11",
+        "bg43",
+        "bg111"
+      ],
+      "tips" : "",
+      "sectionname" : "b",
+      "duration" : -1
+    }
+  ],
+  "statemachine" : [
+    {
+      "newsection" : "b",
+      "oldsection" : "a",
+      "triggerType" : 0,
+      "sectionduration" : 10000
+    },
+    {
+      "newsection" : "a",
+      "oldsection" : "b",
+      "triggerType" : 4,
+      "sectionduration" : 7500
+    }
+  ],
+  "facetips" : "1",
+  "translateVersion" : 1,
+  "useFaceNumber" : 0,
+  "initsection" : "a",
+  "maxPersonCount" : 5,
+  "name" : "tushendan_and7"
+}

@@ -1,0 +1,514 @@
+//吐彩虹狗狗
+precision highp float;
+varying highp vec2 textureCoordinate;
+
+uniform sampler2D inputImageTexture;
+uniform sampler2D inputImageTexture2;//godlight
+uniform int surfaceWidth;
+uniform int surfaceHeight;
+uniform lowp float m_time;
+uniform lowp float m_detect;
+
+
+uniform lowp vec2 location0;
+uniform lowp vec2 location1;
+uniform lowp vec2 location2;
+uniform lowp vec2 location3;
+uniform lowp vec2 location4;
+uniform lowp vec2 location5;
+uniform lowp vec2 location6;
+uniform lowp vec2 location7;
+uniform lowp vec2 location8;
+uniform lowp vec2 location9;
+uniform lowp vec2 location10;
+uniform lowp vec2 location11;
+uniform lowp vec2 location12;
+uniform lowp vec2 location13;
+uniform lowp vec2 location14;
+uniform lowp vec2 location15;
+uniform lowp vec2 location16;
+uniform lowp vec2 location17;
+uniform lowp vec2 location18;
+uniform lowp vec2 location19;
+uniform lowp vec2 location20;
+uniform lowp vec2 location21;
+uniform lowp vec2 location22;
+uniform lowp vec2 location23;
+uniform lowp vec2 location24;
+uniform lowp vec2 location25;
+uniform lowp vec2 location26;
+uniform lowp vec2 location27;
+
+
+#define p_faceleft      location0
+#define p_chin          location1
+#define p_faceright     location2
+#define p_nose          location3
+#define p_eyea          location4
+#define p_eyeb          location5
+#define p_left          location6
+#define p_right         location7
+#define p_chinleft      location8
+#define p_chinright     location9
+#define p_chinleft_u    location10
+#define p_chinright_u   location11
+#define p_noseleft      location12
+#define p_noseright     location13
+
+#define p_faceleft2     location14
+#define p_chin2         location15
+#define p_faceright2    location16
+#define p_nose2         location17
+#define p_eyea2         location18
+#define p_eyeb2         location19
+#define p_left2         location20
+#define p_right2        location21
+#define p_chinleft2     location22
+#define p_chinright2    location23
+#define p_chinleft_u2   location24
+#define p_chinright_u2  location25
+#define p_noseleft2     location26
+#define p_noseright2    location27
+
+#define x_a 0.72
+#define y_a 1.28
+
+#define parameter 1.0
+#define glslname_nvshen 0.0
+
+vec4 blendNormal(vec4 c1, vec4 c2)
+{
+#ifdef USE_NATIVE_MIX
+    return mix(c2, c1, c1.a);
+#else
+    vec4 outputColor;
+    outputColor.r = c1.r + c2.r * c2.a * (1.0 - c1.a);
+    outputColor.g = c1.g + c2.g * c2.a * (1.0 - c1.a);
+    outputColor.b = c1.b + c2.b * c2.a * (1.0 - c1.a);
+    outputColor.a = c1.a + c2.a * (1.0 - c1.a);
+    return outputColor;
+#endif
+}
+
+vec2 faceStretch(vec2 textureCoord, vec2 originPosition, vec2 targetPosition, float radius, float curve)
+{
+    vec2 direction = targetPosition - originPosition;
+    float lengthA = length(direction);
+    float lengthB = min(lengthA, radius);
+    direction *= lengthB / lengthA;
+    float infect = distance(textureCoord, originPosition)/radius;
+    infect = clamp(1.0-infect,0.0,1.0);
+    infect = pow(infect, curve);
+
+    return direction * infect;
+}
+
+float fadeIn(float fade_x, float fade_y, float time)    //increasing
+{
+    float f_time = m_time;
+    if(m_time>time)
+        f_time = time;
+    float value = (fade_y-fade_x)*f_time/time + fade_x;
+    return value;
+}
+
+float fadeDecreasing(float fade_x, float fade_y, float time, float newTriggerTime)    //decreasing
+{
+    float f_time = time-(m_time-newTriggerTime);
+    if(f_time<0.0)
+        f_time = 0.0;
+    float value = (fade_y-fade_x)*f_time/time + fade_x;
+    return value;
+}
+
+
+vec2 stretchFun(vec2 textureCoord, vec2 originPosition, vec2 targetPosition, float radius)
+{
+    vec2 offset = vec2(0.0);
+    vec2 result = vec2(0.0);
+
+    vec2 direction = targetPosition - originPosition;
+    float lengthA = length(direction);
+    //if(lengthA<0.0001)   return (textureCoord-direction);
+
+    float infect = distance(textureCoord, originPosition)/radius;
+
+    infect = 1.0-infect;
+    infect = clamp(infect,0.0,1.0);
+    offset = direction * infect;
+
+    result = textureCoord - offset;
+
+    return result;
+}
+vec2 stretchFun2(vec2 textureCoord, vec2 originPosition, vec2 targetPosition, float radius,float intensity)
+{
+    vec2 offset = vec2(0.0);
+    vec2 result = vec2(0.0);
+
+    vec2 direction = targetPosition - originPosition;
+    float lengthA = length(direction);
+    //if(lengthA<0.0001)   return (textureCoord-direction);
+
+    float infect = distance(textureCoord, originPosition)/radius;
+
+    infect = 1.0-infect;
+    infect = infect*intensity;
+    infect = clamp(infect,0.0,1.0);
+    offset = direction * infect;
+
+    result = textureCoord - offset;
+
+    return result;
+}
+vec2 enlargeFun(vec2 curCoord,vec2 circleCenter,float radius,float intensity)
+{
+    float currentDistance = distance(curCoord,circleCenter);
+    //if (currentDistance<=radius)
+    {
+        float weight = currentDistance/radius;
+        weight = 1.0-intensity*(1.0-weight*weight);
+        weight = clamp(weight,0.0,1.0);
+        curCoord = circleCenter+(curCoord-circleCenter)*weight;
+    }
+    return curCoord;
+}
+
+vec2 enlargeFun2(vec2 curCoord,vec2 circleCenter,float radius,float intensity)
+{
+    float currentDistance = distance(curCoord,circleCenter);
+    //if (currentDistance<=radius)
+    {
+        float weight = currentDistance/radius;
+        weight = 1.0-intensity*(1.0-weight*weight*weight);
+        weight = clamp(weight,0.0,1.0);
+        curCoord = circleCenter+(curCoord-circleCenter)*weight;
+    }
+    return curCoord;
+}
+
+vec2 narrowFun(vec2 curCoord,vec2 circleCenter,float radius,float intensity)
+{
+    float currentDistance = distance(curCoord,circleCenter);
+    //if (currentDistance<=radius)
+    {
+        float weight = currentDistance/radius;
+        weight = 1.0-intensity*(1.0-weight*weight);
+        weight = clamp(weight,0.0001,1.0);
+        curCoord = circleCenter+(curCoord-circleCenter)/weight;
+    }
+    return curCoord;
+}
+
+void main()
+{
+
+    gl_FragColor = texture2D(inputImageTexture,textureCoordinate);
+    
+    vec2 x_y_proportion  = vec2(float(surfaceWidth),float(surfaceHeight));
+    if(0==surfaceWidth||0==surfaceHeight)
+        x_y_proportion=vec2(x_a,y_a);
+    vec2 newCoord = textureCoordinate*x_y_proportion;
+    
+    
+    if(p_nose.x>0.03 && p_nose.y>0.03)
+    {
+        vec2 eyea=p_eyea*x_y_proportion;
+        vec2 eyeb=p_eyeb*x_y_proportion;
+        vec2 left=p_left*x_y_proportion;
+        vec2 right=p_right*x_y_proportion;
+        vec2 nose = p_nose*x_y_proportion;
+        vec2 chin = p_chin*x_y_proportion;
+        
+        vec2 faceleft = p_faceleft*x_y_proportion;
+        vec2 faceright =  p_faceright*x_y_proportion;
+        
+        vec2 chinleft = p_chinleft*x_y_proportion;
+        vec2 chinright = p_chinright*x_y_proportion;
+        
+        vec2 chinleft_u = p_chinleft_u*x_y_proportion;
+        vec2 chinright_u = p_chinright_u*x_y_proportion;
+        vec2 noseleft=p_noseleft*x_y_proportion;
+        vec2 noseright=p_noseright*x_y_proportion;
+        
+        float face_width = distance(eyea,eyeb);
+
+        vec2 srcPoint           = vec2(0.0);
+        vec2 dstPoint           = vec2(0.0);       
+        // eyes
+  
+
+        float eyeRadius = distance(left, right)*0.28;
+        newCoord = enlargeFun(newCoord,eyea,eyeRadius,0.2);
+        newCoord = enlargeFun(newCoord,eyeb,eyeRadius,0.2);    
+        
+        // float eyeRadius = distance(left, right)*0.33;
+        // newCoord = enlargeFun2(newCoord,eyea,eyeRadius,0.3);
+        // newCoord = enlargeFun2(newCoord,eyeb,eyeRadius,0.3);                      
+       
+        //nose
+        float radius = face_width*1.2;//1.0
+        vec2 leftF = faceleft;
+        vec2 targetleftF = nose+(leftF-nose)*0.96;
+        newCoord = stretchFun(newCoord,leftF,targetleftF,radius);
+        
+        vec2 rightF = faceright;
+        vec2 targetrightF = nose+(rightF-nose)*0.96;
+        newCoord = stretchFun(newCoord,rightF,targetrightF,radius);
+
+        radius=face_width*0.6;
+        vec2 up_nose=(eyea+eyeb)*0.5;
+        srcPoint=nose;
+        dstPoint=nose+(up_nose- nose)*0.05;
+        newCoord = stretchFun(newCoord,srcPoint,dstPoint,radius);
+
+        
+        //chin
+        radius = face_width*1.5;
+        vec2 targetchin = nose + (chin - nose) * 0.9;
+        newCoord = stretchFun(newCoord,chin,targetchin,radius);
+        
+        
+        vec2 chinCenter = nose+(chin-nose)*0.7;
+        
+        radius = face_width*1.2;
+        vec2 leftC = chinleft;
+        vec2 targetleftC = chinCenter + (leftC - chinCenter) * 0.95;
+        newCoord = stretchFun(newCoord,leftC,targetleftC,radius);
+        
+        vec2 rightC = chinright;
+        vec2 targetrightC = chinCenter + (rightC - chinCenter) * 0.95;
+        newCoord = stretchFun(newCoord,rightC,targetrightC,radius);
+        
+        
+        radius = face_width*1.2;
+        leftC = chinleft_u;
+        targetleftC = chinCenter + (leftC - chinCenter) * 0.9;
+        newCoord = stretchFun(newCoord,leftC,targetleftC,radius);
+        
+        
+        rightC = chinright_u;
+        targetrightC = chinCenter + (rightC - chinCenter) * 0.9;
+        newCoord = stretchFun(newCoord,rightC,targetrightC,radius);
+        
+
+
+        if(m_detect>=2.0)
+        {
+            if (m_time>0.0) 
+            {
+                    //enlarge mouth
+                    vec2 mouthCenter = (left+right)*0.5;
+                    radius      = face_width*0.55;//0.6
+                    // float  magnification_coefficient = fadeIn(0.0,distance(newCoord,mouthCenter)*1.0/radius,0.12);
+
+                    float  magnification_coefficient = fadeIn(0.0,0.7,0.12);
+                    newCoord    = enlargeFun2(newCoord,mouthCenter,radius,magnification_coefficient);
+
+                    //enlarge face
+                    radius=face_width*0.8;
+                    float face_scale=fadeIn(0.0,1.0,0.12);
+                    vec2 src=faceleft;
+                    vec2 dst=src+(faceleft- nose)*0.07;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    src=faceright;
+                    dst=src+(faceright- nose)*0.07;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    radius=face_width*0.8;//1.0
+                    src=chinleft;
+                    dst=src+(src- nose)*0.06;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    src=chinright;
+                    dst=src+(src- nose)*0.06;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+
+                    //process nose
+                    // radius=face_width*0.5;
+                    // src=nose;
+                    // dst=src+(nose- chin)*0.05;
+                    // newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    radius=face_width*0.4;
+                    src=noseleft;
+                    dst=src+(noseright- src)*0.08;
+                    newCoord=stretchFun(newCoord,src,dst,radius);
+
+                    src=noseright;
+                    dst=src+(noseleft- src)*0.08;
+                    newCoord=stretchFun(newCoord,src,dst,radius);
+
+
+                    //process chin
+                    radius=face_width*1.2;
+                    src=chin;
+                    dst=src+(nose- src)*0.08;//0.1
+                    newCoord=stretchFun(newCoord,src,dst,radius);
+
+
+                    //enlarge eyes
+                    radius      = face_width*0.38;
+                    float dis_eyea=distance(newCoord,eyea);
+                    float dis_eyeb=distance(newCoord,eyeb);
+                    float eye_scale=fadeIn(0.0,0.3,0.12);
+                    newCoord    = enlargeFun(newCoord,eyea,radius,eye_scale);
+                    // eye_scale=fadeIn(0.0,0.3,0.12);
+                    newCoord    = enlargeFun(newCoord,eyeb,radius,eye_scale);
+
+            }
+        }
+
+        vec2 resultCoord = newCoord/x_y_proportion;
+        // resultCoord = textureCoordinate+(resultCoord-textureCoordinate)*parameter;
+
+
+        gl_FragColor = texture2D(inputImageTexture, resultCoord);
+    }
+
+
+
+    if(p_nose2.x>0.03 && p_nose2.y>0.03)
+    {
+        vec2 eyea=p_eyea2*x_y_proportion;
+        vec2 eyeb=p_eyeb2*x_y_proportion;
+        vec2 left=p_left2*x_y_proportion;
+        vec2 right=p_right2*x_y_proportion;
+        vec2 nose = p_nose2*x_y_proportion;
+        vec2 chin = p_chin2*x_y_proportion;
+        
+        vec2 faceleft = p_faceleft2*x_y_proportion;
+        vec2 faceright =  p_faceright2*x_y_proportion;
+        
+        vec2 chinleft = p_chinleft2*x_y_proportion;
+        vec2 chinright = p_chinright2*x_y_proportion;
+        
+        vec2 chinleft_u = p_chinleft_u2*x_y_proportion;
+        vec2 chinright_u = p_chinright_u2*x_y_proportion;
+
+        vec2 noseleft=p_noseleft2*x_y_proportion;
+        vec2 noseright=p_noseright2*x_y_proportion;
+
+        
+        float face_width = distance(eyea,eyeb);
+        
+        // eyes
+        float eyeRadius = distance(left, right)*0.3;
+        newCoord = enlargeFun(newCoord,eyea,eyeRadius,0.16);
+        newCoord = enlargeFun(newCoord,eyeb,eyeRadius,0.16);
+        
+        float radius = face_width*1.0;
+        vec2 leftF = faceleft;
+        vec2 targetleftF = nose+(leftF-nose)*0.96;
+        newCoord = stretchFun(newCoord,leftF,targetleftF,radius);
+        
+        vec2 rightF = faceright;
+        vec2 targetrightF = nose+(rightF-nose)*0.96;
+        newCoord = stretchFun(newCoord,rightF,targetrightF,radius);
+        
+        radius = face_width*1.5;
+        vec2 targetchin = nose + (chin - nose) * 0.9;
+        newCoord = stretchFun(newCoord,chin,targetchin,radius);
+        
+        
+        vec2 chinCenter = nose+(chin-nose)*0.7;
+        
+        radius = face_width*1.2;
+        vec2 leftC = chinleft;
+        vec2 targetleftC = chinCenter + (leftC - chinCenter) * 0.95;
+        newCoord = stretchFun(newCoord,leftC,targetleftC,radius);
+        
+        vec2 rightC = chinright;
+        vec2 targetrightC = chinCenter + (rightC - chinCenter) * 0.95;
+        newCoord = stretchFun(newCoord,rightC,targetrightC,radius);
+        
+        
+        radius = face_width*1.2;
+        leftC = chinleft_u;
+        targetleftC = chinCenter + (leftC - chinCenter) * 0.9;
+        newCoord = stretchFun(newCoord,leftC,targetleftC,radius);
+        
+        
+        rightC = chinright_u;
+        targetrightC = chinCenter + (rightC - chinCenter) * 0.9;
+        newCoord = stretchFun(newCoord,rightC,targetrightC,radius);
+
+        if(m_detect>=2.0)
+        {
+            if (m_time>0.0) 
+            {
+                    //enlarge mouth
+                    vec2 mouthCenter = (left+right)*0.5;
+                    radius      = face_width*0.55;//0.6
+                    // float  magnification_coefficient = fadeIn(0.0,distance(newCoord,mouthCenter)*1.0/radius,0.12);
+
+                    float  magnification_coefficient = fadeIn(0.0,0.7,0.12);
+                    newCoord    = enlargeFun2(newCoord,mouthCenter,radius,magnification_coefficient);
+
+                    //enlarge face
+                    radius=face_width*0.8;
+                    float face_scale=fadeIn(0.0,1.0,0.12);
+                    vec2 src=faceleft;
+                    vec2 dst=src+(faceleft- nose)*0.07;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    src=faceright;
+                    dst=src+(faceright- nose)*0.07;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    radius=face_width*0.8;//1.0
+                    src=chinleft;
+                    dst=src+(src- nose)*0.06;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    src=chinright;
+                    dst=src+(src- nose)*0.06;//0.1
+                    newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+
+                    //process nose
+                    // radius=face_width*0.5;
+                    // src=nose;
+                    // dst=src+(nose- chin)*0.05;
+                    // newCoord = stretchFun2(newCoord,src,dst,radius,face_scale);
+
+                    radius=face_width*0.4;
+                    src=noseleft;
+                    dst=src+(noseright- src)*0.08;
+                    newCoord=stretchFun(newCoord,src,dst,radius);
+
+                    src=noseright;
+                    dst=src+(noseleft- src)*0.08;
+                    newCoord=stretchFun(newCoord,src,dst,radius);
+
+
+                    //process chin
+                    radius=face_width*1.2;
+                    src=chin;
+                    dst=src+(nose- src)*0.08;//0.1
+                    newCoord=stretchFun(newCoord,src,dst,radius);
+
+
+                    //enlarge eyes
+                    radius      = face_width*0.38;
+                    float dis_eyea=distance(newCoord,eyea);
+                    float dis_eyeb=distance(newCoord,eyeb);
+                    float eye_scale=fadeIn(0.0,0.3,0.12);
+                    newCoord    = enlargeFun(newCoord,eyea,radius,eye_scale);
+                    // eye_scale=fadeIn(0.0,0.3,0.12);
+                    newCoord    = enlargeFun(newCoord,eyeb,radius,eye_scale);
+
+            }
+        }
+        
+        vec2 resultCoord = newCoord/x_y_proportion;
+        // resultCoord = textureCoordinate+(resultCoord-textureCoordinate)*parameter;
+        
+        gl_FragColor = texture2D(inputImageTexture, resultCoord);
+    }
+
+
+
+}

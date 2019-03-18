@@ -13,3 +13,9 @@
 
 @end
 
+
+@interface NSString (Upper)
+
+- (BOOL)isUpperCased;
+
+@end
