@@ -91,14 +91,14 @@
 - (void)gotoGifViewWithLarge
 {
     GifViewController *vc = [[GifViewController alloc] init];
-    vc.name = @"large";
+    vc.name = @"largefile";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)gotoYYImageWithLarge
 {
     YYImageViewController *vc = [[YYImageViewController alloc] init];
-    vc.name = @"large";
+    vc.name = @"largefile";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

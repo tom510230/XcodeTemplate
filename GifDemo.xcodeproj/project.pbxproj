@@ -21,7 +21,6 @@
 		E219EF9721F674D00085737B /* GifCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = E219EF9121F674D00085737B /* GifCore.mm */; };
 		E219EF9A21F6772B0085737B /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E219EF9921F6772B0085737B /* demo.gif */; };
 		E219EFA121F679900085737B /* YYImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E219EF9F21F679900085737B /* YYImageViewController.m */; };
-		E219EFA321F681400085737B /* large.gif in Resources */ = {isa = PBXBuildFile; fileRef = E219EFA221F681400085737B /* large.gif */; };
 		E22A2333223D7021001E82EA /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A2314223D7020001E82EA /* BaseViewModel.m */; };
 		E22A2334223D7021001E82EA /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A2315223D7020001E82EA /* BaseView.m */; };
 		E22A2335223D7021001E82EA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E22A2316223D7020001E82EA /* BaseViewController.m */; };
@@ -33,6 +32,7 @@
 		E2F84954223E18510058936E /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F84953223E18510058936E /* FileModel.m */; };
 		E2F84959223E19400058936E /* test1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E2F84958223E19400058936E /* test1.bundle */; };
 		E2F8495C223E1BF10058936E /* FileListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F8495A223E1BF10058936E /* FileListController.m */; };
+		E2F8495F223F22B10058936E /* largefile.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2F8495E223F22B10058936E /* largefile.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,7 +76,6 @@
 		E219EF9921F6772B0085737B /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		E219EF9F21F679900085737B /* YYImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageViewController.m; sourceTree = "<group>"; };
 		E219EFA021F679900085737B /* YYImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageViewController.h; sourceTree = "<group>"; };
-		E219EFA221F681400085737B /* large.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = large.gif; sourceTree = "<group>"; };
 		E22A2314223D7020001E82EA /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		E22A2315223D7020001E82EA /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		E22A2316223D7020001E82EA /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		E2F8495A223E1BF10058936E /* FileListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileListController.m; sourceTree = "<group>"; };
 		E2F8495B223E1BF10058936E /* FileListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileListController.h; sourceTree = "<group>"; };
 		E2F8495D223E38B60058936E /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		E2F8495E223F22B10058936E /* largefile.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = largefile.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,7 +316,7 @@
 		E22A232A223D7021001E82EA /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				E219EFA221F681400085737B /* large.gif */,
+				E2F8495E223F22B10058936E /* largefile.gif */,
 				E219EF9921F6772B0085737B /* demo.gif */,
 			);
 			path = Icon;
@@ -480,10 +480,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2F8495F223F22B10058936E /* largefile.gif in Resources */,
 				E219EF9A21F6772B0085737B /* demo.gif in Resources */,
 				E2F84959223E19400058936E /* test1.bundle in Resources */,
 				E219EF6721F66F000085737B /* Assets.xcassets in Resources */,
-				E219EFA321F681400085737B /* large.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
